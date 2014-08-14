@@ -1,5 +1,5 @@
 ---
-title: "Peer Assessment 1"
+title: "Reproducible Research PA1"
 author: "cyberspacecpa"
 date: "Thursday, August 14, 2014"
 output: html_document
