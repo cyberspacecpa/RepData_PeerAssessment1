@@ -1,6 +1,11 @@
+---
+title: "Peer Assessment 1"
+author: "cyberspacecpa"
+date: "Thursday, August 14, 2014"
+output: html_document
+---     
+
 ## Reproducible Research: Peer Assessment 1
-
-
 
 ### Loading and preprocessing the data
 
@@ -20,7 +25,7 @@ totsteps <- tapply(adcc$steps, adcc$date, sum)
 hist(totsteps,
     main="Histogram of Total Steps with Missing Values Ignored",
     xlab="Total Steps Per Day", 
-    ylab= "Frequency of Total steps Per Day")
+    ylab= "Frequency of Total Steps Per Day")
 ```
 
 ![plot of chunk Plot histogram and calculate mean and median of total number of steps per day](figure/Plot histogram and calculate mean and median of total number of steps per day.png) 
@@ -93,7 +98,7 @@ ctotsteps <- tapply(cad$steps, cad$date, sum)
 hist(ctotsteps,
      main="Histogram of Total Steps with Imputed Values",
      xlab="Total Steps Per Day", 
-     ylab= "Frequency of Total steps Per Day")
+     ylab= "Frequency of Total Steps Per Day")
 ```
 
 ![plot of chunk Plot histogram and calculate mean and median of total number of steps taken each day](figure/Plot histogram and calculate mean and median of total number of steps taken each day.png) 
@@ -115,7 +120,9 @@ There is no significant difference between the values of mean and median calcula
 The difference between means is -0.0013.     
 The difference between medians is 1.1887.
 
-By comparing the two histograms, you can see the impact of imputing missing data on the estimates of the total daily number of steps: In the bin 10000 - 15000, the frequency of total steps per day increased from 28 to 36, while the freqency in the other bins stayed the same.
+By comparing the two histograms, you can see the impact of imputing missing data on the estimates
+of the total daily number of steps: In the bin 10000 - 15000, the frequency of total steps per day
+increased from 28 to 36, while the freqency in the other bins stayed the same.
 
 
 ### Are there differences in activity patterns between weekdays and weekends?
@@ -132,7 +139,7 @@ aday <- cbind(cad, day)
 
 ```r
 suppressPackageStartupMessages(library(latticeExtra))
-avg <- aggregate(aday$steps, by = list(interval = aday$interval, aday$day), FUN=mean) 
+avg <- aggregate(aday$steps, by = list(interval=aday$interval, aday$day), FUN=mean) 
 xyplot(avg$x ~ avg$interval | avg$Group.2, data =avg, layout=c(1,2), type="l",
        xlab="Time Interval",
        ylab="Average Number of Steps")
@@ -141,5 +148,8 @@ xyplot(avg$x ~ avg$interval | avg$Group.2, data =avg, layout=c(1,2), type="l",
 ![plot of chunk Plot activity patterns between weekdays and weekends](figure/Plot activity patterns between weekdays and weekends.png) 
 
 The plots of the activity patterns do depict differences. Although the average number of steps
-are much higher early in the day for the weekday, there is a percipitous decrease in the average 
-and it never comes anywhere near its initial peak. The average number of steps is also high early in the day for the weekend (although not as high as weekday). The average number of steps also decreases percipitously, however, it increases multiple times throughout the day, nearly reaching its initial peak.
+are much higher early in the day for the weekday, there is a percipitous drop in the average 
+and it never comes anywhere near its initial peak. The average number of steps is also high early
+in the day for the weekend (although not as high as weekday). The average number of steps also
+decreases percipitously, however, it increases multiple times throughout the day, nearly reaching
+its initial peak.
